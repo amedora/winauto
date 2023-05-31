@@ -7,6 +7,10 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Infrastructure", "Infrastru
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Automa", "Infrastructure\Automa\Automa.csproj", "{4B96CE95-C746-49F3-8850-9CDBD8B94199}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Demo", "Demo", "{0497E827-A93C-499A-8C0B-5151183BA714}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NotepadDemo", "Demo\NotepadDemo\NotepadDemo.csproj", "{377521CA-39EF-4176-9E8D-4648CD1BD79D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -17,12 +21,17 @@ Global
 		{4B96CE95-C746-49F3-8850-9CDBD8B94199}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4B96CE95-C746-49F3-8850-9CDBD8B94199}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4B96CE95-C746-49F3-8850-9CDBD8B94199}.Release|Any CPU.Build.0 = Release|Any CPU
+		{377521CA-39EF-4176-9E8D-4648CD1BD79D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{377521CA-39EF-4176-9E8D-4648CD1BD79D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{377521CA-39EF-4176-9E8D-4648CD1BD79D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{377521CA-39EF-4176-9E8D-4648CD1BD79D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{4B96CE95-C746-49F3-8850-9CDBD8B94199} = {69CAFE0F-2D36-473F-969B-3329D2C6006A}
+		{377521CA-39EF-4176-9E8D-4648CD1BD79D} = {0497E827-A93C-499A-8C0B-5151183BA714}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {F5988C44-5B62-496F-9B98-C1E3FC07F916}
