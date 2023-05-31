@@ -5,6 +5,7 @@ using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Automation;
+using System.Windows.Forms;
 
 namespace WinAuto.Infrastructure.Automa
 {
@@ -43,21 +44,31 @@ namespace WinAuto.Infrastructure.Automa
 
         private Action<string> BuildUpdateAction(string automationId)
         {
-            var element = _targetWindow.FindFirst(TreeScope.Subtree, new PropertyCondition(AutomationElement.AutomationIdProperty, automationId));
-            ValuePattern vp = element.GetCurrentPattern(ValuePattern.Pattern) as ValuePattern;
+            var element = _targetWindow.FindFirst(TreeScope.Subtree | TreeScope.Descendants, new PropertyCondition(AutomationElement.AutomationIdProperty, automationId));
+            object valuePattern = null;
 
-            Action<string> action = value =>
+            if (!element.TryGetCurrentPattern(ValuePattern.Pattern, out valuePattern))
             {
-                // 同じ値をSetValue()するとInvalidOperationExceptionを
-                // 返すことがあるので、同じ値の場合は何もしない。
-                var currentValue = vp.Current.Value;
-                if (value == currentValue)
-                    return;
+                return value =>
+                {
+                    element.SetFocus();
+                    SendKeys.SendWait(value);
+                };
+            }
+            else
+            {
+                return value =>
+                {
+                    var vp = (ValuePattern)valuePattern;
+                    // 同じ値をSetValue()するとInvalidOperationExceptionを
+                    // 返すことがあるので、同じ値の場合は何もしない。
+                    var currentValue = vp.Current.Value;
+                    if (value == currentValue)
+                        return;
 
-                vp.SetValue(value);
-            };
-
-            return action;
+                    vp.SetValue(value);
+                };
+            }
         }
     }
 
